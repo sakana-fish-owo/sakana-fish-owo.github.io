@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>抽籤器</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1e1e1e; /* Dark Background Color */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        div {
+            text-align: center;
+        }
+        h1 {
+            color: #e0dee0;
+         }
+        #lotteryNumber {
+            font-size: 32px;
+	    font-weight: bold;
+            margin: 20px;
+            color: #e0dee0; /* Blue for the text "抽中的籤號是：" */
+        }
+        #resultNumber {
+            font-weight: bold;
+            color: #d364d9; /* White for the result number */
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #a8a8a8; /* Google Green */
+            color: #000;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold; /* Add font-weight */
+            transition: background-color 0.3s ease, color 0.3s ease; /* Add color transition */
+        }
+        button:hover {
+            background-color: #828282; /* Darker Green on hover */
+            color: #000; /* Text color on hover */
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>抽籤器</h1>
+        <div id="lotteryNumber">點擊下面的按鈕抽籤</div>
+        <button onclick="startLotteryAnimation()">抽籤</button>
+    </div>
+
+    <script>
+        function startLotteryAnimation() {
+            // 設定轉動的時間和速度
+            const duration = 500; // 轉動時間(ms)
+            const speed = 60; // 轉動速度(ms)
+
+            // 開始轉動
+            const startTime = Date.now();
+            const intervalId = setInterval(() => {
+                const elapsedTime = Date.now() - startTime;
+                if (elapsedTime < duration) {
+                    // 生成亂數模擬轉動效果
+                    const number = Math.floor(Math.random() * 900000) + 100000;
+                    const formattedNumber = `${Math.floor(number / 1000)}.${(number % 1000).toString().padStart(3, '0')}`;
+                    document.getElementById('lotteryNumber').textContent = `抽中的籤號是：${formattedNumber}`;
+                } else {
+                    // 停止轉動並顯示最終結果
+                    clearInterval(intervalId);
+                    generateLotteryNumber();
+                }
+            }, speed);
+        }
+
+        function generateLotteryNumber() {
+            // 生成6個0~9的數字，格式為xxx.xxx
+            const number = Math.floor(Math.random() * 900000) + 100000;
+            const formattedNumber = `${Math.floor(number / 1000)}.${(number % 1000).toString().padStart(3, '0')}`;
+            
+            // 顯示在HTML中
+            document.getElementById('lotteryNumber').textContent = `抽中的籤號是：${formattedNumber}`;
+        }
+    </script>
+</body>
+</html>
