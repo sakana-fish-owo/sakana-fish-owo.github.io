@@ -1,63 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>抽籤器</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #1e1e1e;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-        }
-        div {
-            text-align: center;
-        }
-        h1 {
-            color: #e0dee0;
-         }
-        #lotteryNumber {
-            font-size: 32px;
-            font-weight: bold;
-            margin: 20px;
-            color: #e0dee0;
-        }
-        #resultNumber {
-            font-weight: bold;
-            color: #d364d9;
-        }
-        button {
-            padding: 15px 30px;
-            font-size: 18px;
-            cursor: pointer;
-            background-color: #a8a8a8;
-            color: #000;
-            border: none;
-            border-radius: 4px;
-            font-weight: bold;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            margin-top: 10px;
-        }
-        button:hover {
-            background-color: #828282;
-            color: #000;
-        }
-        .library-button {
-            margin-top: 10px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>抽籤器</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #1e1e1e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    
+    div {
+      text-align: center;
+    }
+    
+    h1 {
+      color: #e0dee0;
+    }
+    
+    #lotteryNumber {
+      font-size: 32px;
+      font-weight: bold;
+      margin: 20px;
+      color: #e0dee0;
+    }
+    
+    #resultNumber {
+      font-weight: bold;
+      color: #d364d9;
+    }
+    
+    button {
+      padding: 15px 30px;
+      font-size: 18px;  
+      cursor: pointer;
+      background-color: #a8a8a8;
+      color: #000;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      display: block;
+      margin: 10px auto; 
+    }
+    
+    button:hover {
+      background-color: #828282;
+      color: #000;
+    }
+    
+    .library-button {
+      padding: 13px 20px;
+      font-size: 16px;
+      margin-top: 0;
+    }
+  </style>
 </head>
+
 <body>
-    <div>
-        <h1>抽籤器</h1>
-        <div id="lotteryNumber">點擊下面的按鈕抽籤</div>
-        <button onclick="startLotteryAnimation()">抽籤</button>
-        <button class="library-button" onclick="openLibrarySearch()">查詢公共圖書館電子書平台</button>
-    </div>
+  <div>
+    <h1>抽籤器</h1>
+    <div id="lotteryNumber">點擊下面的按鈕抽籤</div>
+    <button onclick="startLotteryAnimation()">抽籤</button> 
+    <button class="library-button" onclick="openLibrarySearch()">查詢公共圖書館電子書平台</button>
+  </div>
 
     <script>
         function startLotteryAnimation() {
