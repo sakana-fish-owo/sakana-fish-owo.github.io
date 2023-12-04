@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #1e1e1e; /* Dark Background Color */
+            background-color: #1e1e1e;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -22,28 +22,32 @@
          }
         #lotteryNumber {
             font-size: 32px;
-	    font-weight: bold;
+            font-weight: bold;
             margin: 20px;
-            color: #e0dee0; /* Blue for the text "抽中的籤號是：" */
+            color: #e0dee0;
         }
         #resultNumber {
             font-weight: bold;
-            color: #d364d9; /* White for the result number */
+            color: #d364d9;
         }
         button {
             padding: 15px 30px;
             font-size: 18px;
             cursor: pointer;
-            background-color: #a8a8a8; /* Google Green */
+            background-color: #a8a8a8;
             color: #000;
             border: none;
             border-radius: 4px;
-            font-weight: bold; /* Add font-weight */
-            transition: background-color 0.3s ease, color 0.3s ease; /* Add color transition */
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            margin-top: 10px;
         }
         button:hover {
-            background-color: #828282; /* Darker Green on hover */
-            color: #000; /* Text color on hover */
+            background-color: #828282;
+            color: #000;
+        }
+        .library-button {
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -52,25 +56,24 @@
         <h1>抽籤器</h1>
         <div id="lotteryNumber">點擊下面的按鈕抽籤</div>
         <button onclick="startLotteryAnimation()">抽籤</button>
+        <button class="library-button" onclick="openLibrarySearch()">查詢公共圖書館電子書平台</button>
     </div>
 
     <script>
         function startLotteryAnimation() {
-            // 設定轉動的時間和速度
-            const duration = 500; // 轉動時間(ms)
-            const speed = 60; // 轉動速度(ms)
+            const duration = 500;
+            const speed = 60;
 
-            // 開始轉動
             const startTime = Date.now();
             const intervalId = setInterval(() => {
                 const elapsedTime = Date.now() - startTime;
                 if (elapsedTime < duration) {
-                    // 生成亂數模擬轉動效果
-                    const number = Math.floor(Math.random() * 900000) + 100000;
-                    const formattedNumber = `${Math.floor(number / 1000)}.${(number % 1000).toString().padStart(3, '0')}`;
+                    const number1 = Math.floor(Math.random() * 10);
+                    const number2 = Math.floor(Math.random() * 10);
+                    const number3 = Math.floor(Math.random() * 10);
+                    const formattedNumber = `${number1}${number2}${number3}`;
                     document.getElementById('lotteryNumber').textContent = `抽中的籤號是：${formattedNumber}`;
                 } else {
-                    // 停止轉動並顯示最終結果
                     clearInterval(intervalId);
                     generateLotteryNumber();
                 }
@@ -78,12 +81,16 @@
         }
 
         function generateLotteryNumber() {
-            // 生成6個0~9的數字，格式為xxx.xxx
-            const number = Math.floor(Math.random() * 900000) + 100000;
-            const formattedNumber = `${Math.floor(number / 1000)}.${(number % 1000).toString().padStart(3, '0')}`;
-            
-            // 顯示在HTML中
+            const number1 = Math.floor(Math.random() * 10);
+            const number2 = Math.floor(Math.random() * 10);
+            const number3 = Math.floor(Math.random() * 10);
+            const formattedNumber = `${number1}${number2}${number3}`;
             document.getElementById('lotteryNumber').textContent = `抽中的籤號是：${formattedNumber}`;
+        }
+
+        function openLibrarySearch() {
+            const lotteryResult = document.getElementById('lotteryNumber').textContent.split('：')[1];
+            window.open(`https://ebook.nlpi.edu.tw/search?search_field=CLASSNO&search_input=${lotteryResult}`);
         }
     </script>
 </body>
